@@ -3,6 +3,10 @@
   "displayName": "Python Venv Switcher",
   "description": "Automatic virtual environment switching for Python monorepos.",
   "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/wmiller4/python-venv-switcher"
+  },
+  "license": "MIT",
   "engines": {
     "vscode": "^1.89.0"
   },
