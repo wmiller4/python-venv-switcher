@@ -19,9 +19,9 @@ export async function activate(context: vscode.ExtensionContext) {
 	});
 
 	context.subscriptions.push(command, handler);
-	console.log('Activated poetry-multiverse.');
+	console.log('Activated python-venv-switcher.');
 }
 
 export function deactivate() {
-	console.log('Deactivated poetry-multiverse.');
+	console.log('Deactivated python-venv-switcher.');
 }
