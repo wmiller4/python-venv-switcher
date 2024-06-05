@@ -30,6 +30,7 @@ jobs:
       run: pnpm package
     - name: Publish
       if: success() && startsWith(github.ref, 'refs/tags/')
-      run: pnpm run publish
+      run: pnpm deploy
       env:
+        VSCE_PUBLISHER: ${{ env.VSCE_PUBLISHER }}
         VSCE_PAT: ${{ secrets.VSCE_PAT }}
