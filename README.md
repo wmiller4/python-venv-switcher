@@ -36,6 +36,10 @@ Manually created virtual environments are currently not supported.
 
 ## Release Notes
 
+### 0.1.1
+
+Add extension icon.
+
 ### 0.1.0
 
 Initial release.
