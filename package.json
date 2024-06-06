@@ -2,7 +2,8 @@
   "name": "python-venv-switcher",
   "displayName": "Python Venv Switcher",
   "description": "Automatic virtual environment switching for Python monorepos.",
-  "version": "0.1.0",
+  "icon": "icons/icon.png",
+  "version": "0.1.1",
   "publisher": "wmiller4",
   "repository": {
     "url": "https://github.com/wmiller4/python-venv-switcher"
