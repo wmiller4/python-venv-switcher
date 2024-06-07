@@ -1,12 +1,13 @@
-import * as vscode from 'vscode';
 import { PythonExtension } from '@vscode/python-extension';
-import { defaultProviders } from './providers';
-import { EnvironmentManager, createLookup } from './environment';
+import * as vscode from 'vscode';
+import { EnvironmentLookup, EnvironmentManager } from './environment';
+import logger from './logger';
+import { availableProviders } from './providers';
 
 export async function activate(context: vscode.ExtensionContext) {
 	const envManager = new EnvironmentManager(
 		await PythonExtension.api(),
-		createLookup([...defaultProviders])
+		new EnvironmentLookup(await availableProviders())
 	);
 	envManager.setEnvironment(vscode.window.activeTextEditor);
 
@@ -19,9 +20,10 @@ export async function activate(context: vscode.ExtensionContext) {
 	});
 
 	context.subscriptions.push(command, handler);
-	console.log('Activated python-venv-switcher.');
+	logger.debug('Activated python-venv-switcher.');
+	logger.show(true);
 }
 
 export function deactivate() {
-	console.log('Deactivated python-venv-switcher.');
+	logger.debug('Deactivated python-venv-switcher.');
 }
