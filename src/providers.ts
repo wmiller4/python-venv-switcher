@@ -19,12 +19,19 @@ export type ToolConfig = {
     python: string
 };
 
-export const toolProvider = (config: ToolConfig): Promise<VenvProvider> => (
-    exec(config.check).then(() => ({
-        name: config.name,
-        getPython: (sourceDir) => exec(config.python, sourceDir).then(py => py.trim())
-    }))
-);
+export const toolProvider = async (config: ToolConfig): Promise<VenvProvider> => {
+    try {
+        await exec(config.check);
+        logger.info(`Found provider: ${config.name}`);
+        return {
+            name: config.name,
+            getPython: (sourceDir) => exec(config.python, sourceDir).then(py => py.trim())
+        };
+    } catch (err) {
+        logger.info(`Unable to locate provider: ${config.name}`);
+        return Promise.reject(err);
+    }
+};
 
 const defaultProviders: ToolConfig[] = [
     {
