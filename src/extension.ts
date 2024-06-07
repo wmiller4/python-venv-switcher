@@ -21,7 +21,6 @@ export async function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(command, handler);
 	logger.debug('Activated python-venv-switcher.');
-	logger.show(true);
 }
 
 export function deactivate() {
