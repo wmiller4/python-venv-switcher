@@ -4,6 +4,7 @@ import path from "path";
 import * as vscode from 'vscode';
 import logger from './logger';
 import { VenvProvider } from "./providers";
+import { setTestingCwd } from "./testing";
 
 type PythonEnvironment = {
 	providerName: string
@@ -65,9 +66,13 @@ export class EnvironmentManager {
 		}
 		if (this.activeEnvironment === targetEnvironment.pythonPath) {
 			logger.debug('Target virtual environment is already active.');
+			if (ignoreCache) {
+				setTestingCwd(editor);
+			}
 			return;
 		}
-		this.pythonApi.environments.updateActiveEnvironmentPath(targetEnvironment.pythonPath);
+		await this.pythonApi.environments.updateActiveEnvironmentPath(targetEnvironment.pythonPath);
 		logger.info(`Activated ${targetEnvironment.providerName} environment ${targetEnvironment.pythonPath}`);
+		await setTestingCwd(editor);
 	}
 }

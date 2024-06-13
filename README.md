@@ -24,7 +24,25 @@ This extension relies on the official [Python VS Code extension](https://marketp
 
 ## Extension Settings
 
-This extension does not expose any settings.
+### `python.testing.cwdTemplate`
+
+Default: `null`
+  
+If set, update the `python.testing.cwd` setting used by the Python extension to discover tests based on the active project.
+Use `${projectRoot}` as a placeholder for the root directory of the active project.
+
+For example, use `${projectRoot}/tests` to locate tests in a tests directory:
+
+```
+project1/
+    project1/
+        __init__.py
+        code.py
+    tests/
+        __init__.py
+        test_code.py
+    pyproject.toml
+```
 
 ## Known Issues
 
@@ -36,6 +54,10 @@ If the environment for a given file has changed, the `Activate Python Environmen
 Manually created virtual environments are currently not supported.
 
 ## Release Notes
+
+### 0.3.0
+
+Add ability to configure location of Python tests based on project root.
 
 ### 0.2.0
 
