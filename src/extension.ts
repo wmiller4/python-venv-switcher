@@ -9,7 +9,7 @@ export async function activate(context: vscode.ExtensionContext) {
 		await PythonExtension.api(),
 		new EnvironmentLookup(await availableProviders())
 	);
-	envManager.setEnvironment(vscode.window.activeTextEditor);
+	envManager.setEnvironment(vscode.window.activeTextEditor, true);
 
 	const command = vscode.commands.registerCommand('python-venv-switcher.setEnvironment', () => {
 		envManager.setEnvironment(vscode.window.activeTextEditor, true);
