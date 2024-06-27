@@ -16,7 +16,10 @@ This extension supports virtual environments managed by:
 Since this extension queries the tool to locate the environment, environments can live outside of the VS Code workspace.
 
 Multiple environments for a single file are supported.
-Use your tool to switch environments (such as `poetry env use` for Poetry). Then run the `Activate Python Environment` command in VS Code to pick up the new environment.
+Use your tool to switch environments (such as `poetry env use` for Poetry).
+Then run the `Activate Python Environment` command in VS Code to pick up the new environment.
+
+The working directory for Python test discovery can be configured based on the active environment.
 
 ## Requirements
 
@@ -31,7 +34,7 @@ Default: `null`
 If set, update the `python.testing.cwd` setting used by the Python extension to discover tests based on the active project.
 Use `${projectRoot}` as a placeholder for the root directory of the active project.
 
-For example, use `${projectRoot}/tests` to locate tests in a tests directory:
+For example, use `${projectRoot}` to locate tests in a tests directory:
 
 ```
 project1/
@@ -54,6 +57,10 @@ If the environment for a given file has changed, the `Activate Python Environmen
 Manually created virtual environments are currently not supported.
 
 ## Release Notes
+
+### 0.3.1
+
+Update readme.
 
 ### 0.3.0
 

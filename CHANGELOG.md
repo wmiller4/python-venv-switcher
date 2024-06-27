@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.3.1
+
+* Update readme.
+
 ## 0.3.0
 
 * Add ability to configure location of Python tests based on project root.

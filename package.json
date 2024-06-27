@@ -3,8 +3,9 @@
   "displayName": "Python Venv Switcher",
   "description": "Automatic virtual environment switching for Python monorepos.",
   "icon": "icons/icon.png",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "publisher": "wmiller4",
+  "homepage": "https://irregular-expressions.net/switcher",
   "repository": {
     "url": "https://github.com/wmiller4/python-venv-switcher"
   },
@@ -16,7 +17,7 @@
     "Other"
   ],
   "keywords": [
-    "monorepo", "pdm", "pipenv", "poetry", "venv"
+    "monorepo", "pdm", "pipenv", "poetry", "python", "venv"
   ],
   "activationEvents": [
     "onLanguage:python"
@@ -54,6 +55,12 @@
     "package": "vsce package --no-dependencies",
     "publish": "vsce publish --no-dependencies"
   },
+  "dependencies": {
+    "@vscode/python-extension": "^1.0.5"
+  },
+  "extensionDependencies": [
+    "ms-python.python"
+  ],
   "devDependencies": {
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
@@ -67,8 +74,5 @@
     "eslint": "^8.57.0",
     "typescript": "^5.4.5"
   },
-  "packageManager": "pnpm@9.1.4+sha512.9df9cf27c91715646c7d675d1c9c8e41f6fce88246f1318c1aa6a1ed1aeb3c4f032fcdf4ba63cc69c4fe6d634279176b5358727d8f2cc1e65b65f43ce2f8bfb0",
-  "dependencies": {
-    "@vscode/python-extension": "^1.0.5"
-  }
+  "packageManager": "pnpm@9.1.4+sha512.9df9cf27c91715646c7d675d1c9c8e41f6fce88246f1318c1aa6a1ed1aeb3c4f032fcdf4ba63cc69c4fe6d634279176b5358727d8f2cc1e65b65f43ce2f8bfb0"
 }
