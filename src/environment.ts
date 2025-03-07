@@ -46,7 +46,7 @@ export class EnvironmentLookup {
 
 export class EnvironmentManager {
 	private readonly pythonApi: PythonExtension;
-	private readonly lookup: EnvironmentLookup;
+	lookup: EnvironmentLookup;
 
 	constructor(pythonApi: PythonExtension, lookup: EnvironmentLookup) {
 		this.pythonApi = pythonApi;

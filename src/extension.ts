@@ -11,15 +11,28 @@ export async function activate(context: vscode.ExtensionContext) {
 	);
 	envManager.setEnvironment(vscode.window.activeTextEditor, true);
 
-	const command = vscode.commands.registerCommand('python-venv-switcher.setEnvironment', () => {
+	const setEnvCommand = vscode.commands.registerCommand('python-venv-switcher.setEnvironment', () => {
 		envManager.setEnvironment(vscode.window.activeTextEditor, true);
 	});
 
-	const handler = vscode.window.onDidChangeActiveTextEditor(editor => {
+	const resetLookupCommand = vscode.commands.registerCommand('python-venv-switcher.resetLookup', async () => {
+		envManager.lookup = new EnvironmentLookup(await availableProviders());
+		envManager.setEnvironment(vscode.window.activeTextEditor, true);
+	});
+
+	const configHandler = vscode.workspace.onDidChangeConfiguration(async e => {
+		logger.debug('Configuration changed.');
+		if (!e.affectsConfiguration('python.venv.switcher.customProvider')) { return; }
+		logger.info('Reloading environment lookup due to configuration change.');
+		envManager.lookup = new EnvironmentLookup(await availableProviders());
+		envManager.setEnvironment(vscode.window.activeTextEditor, true);
+	});
+
+	const editorHandler = vscode.window.onDidChangeActiveTextEditor(editor => {
 		envManager.setEnvironment(editor);
 	});
 
-	context.subscriptions.push(command, handler);
+	context.subscriptions.push(setEnvCommand, resetLookupCommand, configHandler, editorHandler);
 	logger.debug('Activated python-venv-switcher.');
 }
 
