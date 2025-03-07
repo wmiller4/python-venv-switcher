@@ -2,34 +2,35 @@
 
 *Automatic virtual environment switching for Python monorepos.*
 
-This extension automatically finds and activates the correct Python virtual environment in VS Code for the current file.
-It requires no configuration and does not rely on folder structure conventions.
+Venv Switcher automatically finds and activates the correct Python virtual environment in VS Code for the current file.
 
 ## Features
 
-This extension supports virtual environments managed by:
+:white_check_mark: Automatically detects virtual environments managed by:
 
 * [PDM](https://pdm-project.org/)
 * [Poetry](https://python-poetry.org)
 * [Pipenv](https://pipenv.pypa.io/)
+* And more, with [custom providers](#custom-provider)
 
-Since this extension queries the tool to locate the environment, environments can live outside of the VS Code workspace.
+:mag_right: Locates virtual environments outside (and inside) of the VS Code workspace.<br />
+:arrows_counterclockwise: Handles [multiple environments](#activate-python-environment) per file.<br />
+:test_tube: Updates the [working directory](#cwd-template) used for test discovery based on the active file's Python project.
 
-Multiple environments for a single file are supported.
-Use your tool to switch environments (such as `poetry env use` for Poetry).
-Then run the `Activate Python Environment` command in VS Code to pick up the new environment.
+## Settings
 
-The working directory for Python test discovery can be configured based on the active environment.
+### Custom Provider
 
-## Requirements
+Setting key: `python.venv.switcher.customProvider`
 
-This extension relies on the official [Python VS Code extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
+A command that returns the full path to the virtual environment's Python executable.
+If set, overrides the default environment resolution logic.
 
-## Extension Settings
+For example, use `uv python find` to resolve an environment managed by uv.
 
-### `python.testing.cwdTemplate`
+### CWD Template
 
-Default: `null`
+Setting key: `python.testing.cwdTemplate`
   
 If set, update the `python.testing.cwd` setting used by the Python extension to discover tests based on the active project.
 Use `${projectRoot}` as a placeholder for the root directory of the active project.
@@ -47,35 +48,15 @@ project1/
     pyproject.toml
 ```
 
-## Known Issues
+## Commands
 
-You must reload this extension after installing a supported Python tool.
-(Available tools are checked when the extension is first activated.)
+### Activate Python Environment
 
-If the environment for a given file has changed, the `Activate Python Environment` command must be run.
+Manually trigger the environment resolution for the current file.
+Run this command if the environment has changed, such as after running `poetry env use`.
 
-Manually created virtual environments are currently not supported.
+### Reset Venv Switcher Cache
 
-## Release Notes
-
-### 0.3.1
-
-Update readme.
-
-### 0.3.0
-
-Add ability to configure location of Python tests based on project root.
-
-### 0.2.0
-
-Fix an issue where unavailable tools were still considered available when checking for environments.
-
-Add logging.
-
-### 0.1.1
-
-Add extension icon.
-
-### 0.1.0
-
-Initial release.
+Re-check for supported virtual environment providers and forget previously resolved environments.
+Run this command after installing a supported environment provider, such as Poetry.
+(Providers are checked when the extension is first activated, and when the Custom Provider setting is modified.)
