@@ -1,4 +1,5 @@
 import * as cp from 'child_process';
+import * as vscode from "vscode";
 import logger from './logger';
 
 const exec = async (command: string, cwd?: string) => new Promise<string>((resolve, reject) => {
@@ -51,7 +52,19 @@ const defaultProviders: ToolConfig[] = [
     },
 ] as const;
 
+const customProvider: () => VenvProvider | null = () => {
+    const config = vscode.workspace.getConfiguration('python.venv.switcher');
+    const tool = config.get<string>('customProvider');
+    return tool ? {
+        name: 'Custom',
+        getPython: (sourceDir) => exec(tool, sourceDir).then(py => py.trim())
+    } : null;
+};
+
 export const availableProviders = async (providers: ToolConfig[] = defaultProviders) => {
+    const custom = customProvider();
+    if (custom) { return [custom]; }
+
     const results = await Promise.allSettled(providers.map(toolProvider));
     return results.flatMap(result => result.status === 'fulfilled' ? [result.value] : []);
 };
