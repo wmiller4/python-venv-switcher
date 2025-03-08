@@ -1,9 +1,13 @@
 # Change Log
 
+## 0.4.1
+
+* Fix formatting in readme.
+* Update esbuild.
+
 ## 0.4.0
 
 * Add ability to configure a custom command for environment resolution.
-
 * Add command to re-check environment providers and reset environment cache.
 
 ## 0.3.1
