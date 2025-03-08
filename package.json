@@ -3,7 +3,7 @@
   "displayName": "Python Venv Switcher",
   "description": "Automatic virtual environment switching for Python monorepos.",
   "icon": "icons/icon.png",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "publisher": "wmiller4",
   "homepage": "https://irregular-expressions.net/switcher",
   "repository": {

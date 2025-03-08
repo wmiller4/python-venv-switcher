@@ -6,16 +6,18 @@ Venv Switcher automatically finds and activates the correct Python virtual envir
 
 ## Features
 
-:white_check_mark: Automatically detects virtual environments managed by:
+Automatically detects virtual environments managed by:
 
 * [PDM](https://pdm-project.org/)
 * [Poetry](https://python-poetry.org)
 * [Pipenv](https://pipenv.pypa.io/)
 * And more, with [custom providers](#custom-provider)
 
-:mag_right: Locates virtual environments outside (and inside) of the VS Code workspace.<br />
-:arrows_counterclockwise: Handles [multiple environments](#activate-python-environment) per file.<br />
-:test_tube: Updates the [working directory](#cwd-template) used for test discovery based on the active file's Python project.
+Supports most project layouts:
+
+* Locates virtual environments outside (and inside) of the VS Code workspace.<br />
+* Handles [multiple environments](#activate-python-environment) per file.<br />
+* Updates the [working directory](#cwd-template) used for test discovery based on the active file's Python project.
 
 ## Settings
 
