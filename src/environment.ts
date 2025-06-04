@@ -3,8 +3,10 @@ import fs, { PathLike } from "fs";
 import path from "path";
 import * as vscode from 'vscode';
 import logger from './logger';
+import paths from "./paths";
 import { VenvProvider } from "./providers";
 import { setTestingCwd } from "./testing";
+import workspace from "./workspace";
 
 type PythonEnvironment = {
 	providerName: string
@@ -71,8 +73,15 @@ export class EnvironmentManager {
 			}
 			return;
 		}
-		await this.pythonApi.environments.updateActiveEnvironmentPath(targetEnvironment.pythonPath);
-		logger.info(`Activated ${targetEnvironment.providerName} environment ${targetEnvironment.pythonPath}`);
-		await setTestingCwd(editor);
+		if (vscode.workspace.getWorkspaceFolder(editor.document.uri)) {
+			await this.pythonApi.environments.updateActiveEnvironmentPath(targetEnvironment.pythonPath);
+			logger.info(`Activated ${targetEnvironment.providerName} environment ${targetEnvironment.pythonPath}`);
+			await setTestingCwd(editor);
+		} else {
+			const root = paths.projectRoot(editor.document.uri.fsPath);
+			if (root) {
+				await workspace.create(vscode.Uri.file(root));
+			}
+		}
 	}
 }

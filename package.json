@@ -48,6 +48,17 @@
           "type": "string",
           "default": null
         },
+        "python.venv.switcher.createWorkspace": {
+          "title": "Create Workspace",
+          "description": "Whether a new workspace should be created if needed to activate a Python environment.",
+          "type": "string",
+          "default": "ask",
+          "enum": [
+            "always",
+            "ask",
+            "never"
+          ]
+        },
         "python.venv.switcher.customProvider": {
           "title": "Tool",
           "description": "A command that returns the full path to the virtual environment's Python executable. If set, overrides the default environment resolution logic.",
