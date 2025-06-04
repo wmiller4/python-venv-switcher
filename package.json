@@ -78,17 +78,19 @@
     "ms-python.python"
   ],
   "devDependencies": {
+    "@stylistic/eslint-plugin": "^4.4.0",
     "@types/mocha": "^10.0.10",
-    "@types/node": "~18.19.79",
+    "@types/node": "~18.19.110",
     "@types/vscode": "^1.89.0",
-    "@typescript-eslint/eslint-plugin": "^7.18.0",
-    "@typescript-eslint/parser": "^7.18.0",
+    "@typescript-eslint/eslint-plugin": "^8.33.1",
+    "@typescript-eslint/parser": "^8.33.1",
     "@vscode/test-cli": "^0.0.9",
-    "@vscode/test-electron": "^2.4.1",
+    "@vscode/test-electron": "^2.5.2",
     "@vscode/vsce": "^2.32.0",
-    "esbuild": "^0.25.0",
-    "eslint": "^8.57.1",
-    "typescript": "^5.8.2"
+    "esbuild": "^0.25.5",
+    "eslint": "^9.28.0",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.33.1"
   },
   "packageManager": "pnpm@9.1.4+sha512.9df9cf27c91715646c7d675d1c9c8e41f6fce88246f1318c1aa6a1ed1aeb3c4f032fcdf4ba63cc69c4fe6d634279176b5358727d8f2cc1e65b65f43ce2f8bfb0"
 }

@@ -21,7 +21,7 @@ export class EnvironmentLookup {
 
 	private async findPython(cwd: string): Promise<PythonEnvironment | undefined> {
 		for (const provider of this.providers) {
-			const python = await provider.getPython(cwd).catch(_ => undefined);
+			const python = await provider.getPython(cwd).catch(() => undefined);
 			if (python && fs.existsSync(python)) {
 				logger.debug(`Found ${provider.name} environment ${python} for ${cwd}`);
 				return { providerName: provider.name, pythonPath: python };
