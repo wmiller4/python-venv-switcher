@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.4.2
+
+* Update tar-fs, undici.
+
 ## 0.4.1
 
 * Fix formatting in readme.
