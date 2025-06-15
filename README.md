@@ -21,6 +21,14 @@ Supports most project layouts:
 
 ## Settings
 
+### Create Workspace
+
+Setting key: `python.venv.switcher.createWorkspace`
+
+VS Code only allows a virtual environment to be set if a workspace is open.
+When an environment is detected for an open file but no workspace is open,
+this setting controls whether a new workspace is created to activate the virtual environment.
+
 ### Custom Provider
 
 Setting key: `python.venv.switcher.customProvider`
