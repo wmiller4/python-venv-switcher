@@ -3,7 +3,7 @@
   "displayName": "Python Venv Switcher",
   "description": "Automatic virtual environment switching for Python monorepos.",
   "icon": "icons/icon.png",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "publisher": "wmiller4",
   "homepage": "https://irregular-expressions.net/switcher",
   "repository": {
@@ -42,12 +42,6 @@
     "configuration": {
       "title": "Python Venv Switcher",
       "properties": {
-        "python.testing.cwdTemplate": {
-          "title": "Working Directory Template",
-          "description": "Template for resolving the working directory for Python tests. Use `${projectRoot}` as a placeholder for the project root.",
-          "type": "string",
-          "default": null
-        },
         "python.venv.switcher.createWorkspace": {
           "title": "Create Workspace",
           "description": "Whether a new workspace should be created if needed to activate a Python environment.",
@@ -62,6 +56,12 @@
         "python.venv.switcher.customProvider": {
           "title": "Tool",
           "description": "A command that returns the full path to the virtual environment's Python executable. If set, overrides the default environment resolution logic.",
+          "type": "string",
+          "default": null
+        },
+        "python.testing.cwdTemplate": {
+          "title": "Working Directory Template",
+          "description": "Template for resolving the working directory for Python tests. Use `${projectRoot}` as a placeholder for the project root.",
           "type": "string",
           "default": null
         }

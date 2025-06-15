@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.5.0
+
+* Add ability to create a workspace if needed to activate a virtual environment.
+
 ## 0.4.2
 
 * Update tar-fs, undici.
@@ -25,7 +29,6 @@
 ## 0.2.0
 
 * Fix an issue where unavailable tools were still considered available when checking for environments.
-
 * Add logging.
 
 ## 0.1.1
