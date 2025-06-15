@@ -49,6 +49,7 @@ export class EnvironmentLookup {
 export class EnvironmentManager {
 	private readonly pythonApi: PythonExtension;
 	lookup: EnvironmentLookup;
+	readonly workspaceRoots: Set<string> = new Set<string>();
 
 	constructor(pythonApi: PythonExtension, lookup: EnvironmentLookup) {
 		this.pythonApi = pythonApi;
@@ -79,7 +80,8 @@ export class EnvironmentManager {
 			await setTestingCwd(editor);
 		} else {
 			const root = paths.projectRoot(editor.document.uri.fsPath);
-			if (root) {
+			if (root && (ignoreCache || !this.workspaceRoots.has(root))) {
+				this.workspaceRoots.add(root);
 				await workspace.create(vscode.Uri.file(root));
 			}
 		}
