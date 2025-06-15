@@ -17,6 +17,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
 	const resetLookupCommand = vscode.commands.registerCommand('python-venv-switcher.resetLookup', async () => {
 		envManager.lookup = new EnvironmentLookup(await availableProviders());
+		envManager.workspaceRoots.clear();
 		envManager.setEnvironment(vscode.window.activeTextEditor, true);
 	});
 
